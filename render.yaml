@@ -1,6 +1,7 @@
 services:
   - type: worker
     name: vpd-security-bot
+    runtime: docker   # <-- DIESE ZEILE HAT GEFEHLT
     plan: free
     dockerfilePath: ./Dockerfile
     envVars:
