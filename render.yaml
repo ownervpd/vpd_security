@@ -1,0 +1,19 @@
+services:
+  - type: worker
+    name: vpd-security-bot
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
+    envVars:
+      - key: DISCORD_BOT_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: WIT_AI_TOKEN
+        sync: false
+    buildFilter:
+      paths:
+      - "**.py"
+      - "requirements.txt"
+    preDeployCommand: "apt-get update && apt-get install -y libopus-dev ffmpeg"
